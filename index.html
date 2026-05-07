@@ -823,6 +823,31 @@
         .modal-body p { margin-bottom: 12px; }
         .modal-body a { color: var(--color-brand-darker); font-weight: 500; }
         .modal-body a:hover { text-decoration: underline; }
+        /* ============ LANG SWITCHER ============ */
+        .lang-switcher {
+            display: flex;
+            gap: 1px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: var(--color-border);
+            flex-shrink: 0;
+        }
+        .lang-btn {
+            padding: 7px 10px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            background: white;
+            transition: all 0.15s;
+            letter-spacing: 0.04em;
+            line-height: 1;
+        }
+        .lang-btn:hover { color: var(--color-text); background: var(--color-bg-alt); }
+        .lang-btn.active { color: var(--color-brand-darker); background: rgba(37,211,102,0.1); }
+        @media (max-width: 768px) {
+            .lang-btn { padding: 6px 8px; font-size: 11px; }
+        }
     </style>
 </head>
 <body>
@@ -836,16 +861,21 @@
         </a>
         <nav class="nav" aria-label="Hauptnavigation">
             <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why">Warum SOMON</a></li>
-                <li><a href="#how">So geht's</a></li>
-                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                <li><a href="#why" data-i18n="nav.why">Warum SOMON</a></li>
+                <li><a href="#how" data-i18n="nav.how">So geht's</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Kontakt</a></li>
             </ul>
-            <a href="https://wa.me/4368110163636?text=Hallo%20SOMON%2C%20ich%20brauche%20einen%20Transport." class="btn btn-primary btn-header" target="_blank" rel="noopener" aria-label="WhatsApp Chat starten">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="de" aria-label="Deutsch">DE</button>
+                <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+                <button class="lang-btn" data-lang="ru" aria-label="Русский">RU</button>
+            </div>
+            <a href="https://wa.me/4368110163636?text=Hallo%20SOMON%2C%20ich%20brauche%20einen%20Transport." class="btn btn-primary btn-header" target="_blank" rel="noopener" aria-label="WhatsApp Chat starten" data-wa>
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
-                WhatsApp
+                <span data-i18n="nav.wa_btn">WhatsApp</span>
             </a>
         </nav>
     </div>
@@ -859,25 +889,25 @@
         <div class="hero-content">
             <span class="eyebrow">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                Österreichweit im Einsatz
+                <span data-i18n="hero.eyebrow">Österreichweit im Einsatz</span>
             </span>
-            <h1 data-dyn-h1>Schneller Transport,<br>wenn Sie ihn brauchen.</h1>
-            <p class="subtitle" data-dyn-subtitle>Möbeltransport, Umzüge, Entrümpelungen und Express Lieferungen in ganz Österreich. Direkter Kontakt per WhatsApp — keine Formulare, keine Wartezeit.</p>
+            <h1 data-i18n-html="hero.h1">Schneller Transport,<br>wenn Sie ihn brauchen.</h1>
+            <p class="subtitle" data-i18n="hero.subtitle">Möbeltransport, Umzüge, Entrümpelungen und Express Lieferungen in ganz Österreich. Direkter Kontakt per WhatsApp — keine Formulare, keine Wartezeit.</p>
             <div class="hero-ctas">
-                <a href="https://wa.me/4368110163636?text=Hallo%20SOMON%2C%20ich%20brauche%20einen%20Transport." class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                <a href="https://wa.me/4368110163636?text=Hallo%20SOMON%2C%20ich%20brauche%20einen%20Transport." class="btn btn-primary btn-lg" target="_blank" rel="noopener" data-wa>
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    WhatsApp kontaktieren
+                    <span data-i18n="hero.btn_wa">WhatsApp kontaktieren</span>
                 </a>
                 <a href="tel:+4368110163636" class="btn btn-ghost-light btn-lg">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    Jetzt anrufen
+                    <span data-i18n="hero.btn_call">Jetzt anrufen</span>
                 </a>
             </div>
             <div class="hero-trust">
-                <div class="trust-item"><span class="num" data-count="500" data-suffix="+">0+</span><span class="lbl">Transporte</span></div>
-                <div class="trust-item"><span class="num">24/7</span><span class="lbl">Erreichbar</span></div>
-                <div class="trust-item"><span class="num" data-count="100" data-suffix="%">0%</span><span class="lbl">Festpreis</span></div>
-                <div class="trust-item"><span class="num">5★</span><span class="lbl">Bewertungen</span></div>
+                <div class="trust-item"><span class="num" data-count="500" data-suffix="+">0+</span><span class="lbl" data-i18n="hero.trust1">Transporte</span></div>
+                <div class="trust-item"><span class="num">24/7</span><span class="lbl" data-i18n="hero.trust2">Erreichbar</span></div>
+                <div class="trust-item"><span class="num" data-count="100" data-suffix="%">0%</span><span class="lbl" data-i18n="hero.trust3">Festpreis</span></div>
+                <div class="trust-item"><span class="num">5★</span><span class="lbl" data-i18n="hero.trust4">Bewertungen</span></div>
             </div>
         </div>
         <div class="hero-image">
@@ -924,49 +954,49 @@
 <section id="services">
     <div class="container">
         <div class="section-title fade-in">
-            <span class="eyebrow">Unsere Services</span>
-            <h2>Alles, was Sie transportieren müssen.</h2>
-            <p>Von einzelnen Möbelstücken bis zum kompletten Umzug — wir kümmern uns darum.</p>
+            <span class="eyebrow" data-i18n="svc.eyebrow">Unsere Services</span>
+            <h2 data-i18n="svc.h2">Alles, was Sie transportieren müssen.</h2>
+            <p data-i18n="svc.p">Von einzelnen Möbelstücken bis zum kompletten Umzug — wir kümmern uns darum.</p>
         </div>
         <div class="services-grid">
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17h2v-7a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3v7h1"/><path d="M2 17v2h2"/><path d="M22 17v2h-2"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/><line x1="10" y1="7" x2="10" y2="14"/></svg>
                 </div>
-                <h3>Möbeltransport</h3>
-                <p>Sichere Beförderung Ihrer Möbel — vom Sofa bis zum Kleiderschrank, mit Tragehilfe.</p>
+                <h3 data-i18n="svc1.h3">Möbeltransport</h3>
+                <p data-i18n="svc1.p">Sichere Beförderung Ihrer Möbel — vom Sofa bis zum Kleiderschrank, mit Tragehilfe.</p>
                 <div class="price-badge">ab <strong>€79</strong></div>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 </div>
-                <h3>Umzüge</h3>
-                <p>Kompletter Umzugsservice in ganz Österreich — wir packen mit an, Sie sparen Zeit.</p>
+                <h3 data-i18n="svc2.h3">Umzüge</h3>
+                <p data-i18n="svc2.p">Kompletter Umzugsservice in ganz Österreich — wir packen mit an, Sie sparen Zeit.</p>
                 <div class="price-badge">ab <strong>€149</strong></div>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
-                <h3>Express Lieferung</h3>
-                <p>Same-Day-Lieferung in Wien & Umgebung — wenn es schnell gehen muss, sind wir in 2 Stunden bei Ihnen.</p>
+                <h3 data-i18n="svc3.h3">Express Lieferung</h3>
+                <p data-i18n="svc3.p">Same-Day-Lieferung in Wien & Umgebung — wenn es schnell gehen muss, sind wir in 2 Stunden bei Ihnen.</p>
                 <div class="price-badge">ab <strong>€59</strong></div>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
                 </div>
-                <h3>Entrümpelungen</h3>
-                <p>Wohnungen, Keller, Dachböden, Garagen — wir räumen auf und entsorgen fachgerecht. Besenrein zum Festpreis.</p>
+                <h3 data-i18n="svc4.h3">Entrümpelungen</h3>
+                <p data-i18n="svc4.p">Wohnungen, Keller, Dachböden, Garagen — wir räumen auf und entsorgen fachgerecht. Besenrein zum Festpreis.</p>
                 <div class="price-badge">ab <strong>€199</strong></div>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
                 </div>
-                <h3>Kleintransporte</h3>
-                <p>Pakete, Einzelteile, kleine Sendungen — auch wenn es nur eine Sache ist, fahren wir.</p>
+                <h3 data-i18n="svc5.h3">Kleintransporte</h3>
+                <p data-i18n="svc5.p">Pakete, Einzelteile, kleine Sendungen — auch wenn es nur eine Sache ist, fahren wir.</p>
                 <div class="price-badge">ab <strong>€49</strong></div>
             </div>
         </div>
@@ -979,27 +1009,27 @@
         <div class="equipment-inner">
             <div class="equipment-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                3,5t Transporter
+                <span data-i18n="eq.van">3,5t Transporter</span>
             </div>
             <div class="equipment-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12L8 8M12 12l4-4"/><rect x="2" y="3" width="20" height="5" rx="1"/></svg>
-                Profi-Möbeldecken
+                <span data-i18n="eq.blankets">Profi-Möbeldecken</span>
             </div>
             <div class="equipment-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v6l4 4-4 4v6"/><path d="M18 2v6l-4 4 4 4v6"/></svg>
-                Sackkarre & Tragegeschirr
+                <span data-i18n="eq.cart">Sackkarre & Tragegeschirr</span>
             </div>
             <div class="equipment-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                Möbel-Demontage & Montage
+                <span data-i18n="eq.assembly">Möbel-Demontage & Montage</span>
             </div>
             <div class="equipment-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                Festpreisgarantie
+                <span data-i18n="eq.fixprice">Festpreisgarantie</span>
             </div>
             <div class="equipment-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
-                Fachgerechte Entsorgung
+                <span data-i18n="eq.disposal">Fachgerechte Entsorgung</span>
             </div>
         </div>
     </div>
@@ -1009,8 +1039,8 @@
 <section class="why" id="why">
     <div class="container">
         <div class="section-title fade-in">
-            <span class="eyebrow">Warum SOMON</span>
-            <h2>Kunden in ganz Österreich vertrauen uns aus gutem Grund.</h2>
+            <span class="eyebrow" data-i18n="why.eyebrow">Warum SOMON</span>
+            <h2 data-i18n="why.h2">Kunden in ganz Österreich vertrauen uns aus gutem Grund.</h2>
         </div>
         <div class="why-grid">
             <div class="why-item fade-in">
@@ -1018,8 +1048,8 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <div>
-                    <h3>Schnell verfügbar</h3>
-                    <p>Reaktionszeit unter 2 Stunden. Auch am Wochenende und abends.</p>
+                    <h3 data-i18n="why1.h3">Schnell verfügbar</h3>
+                    <p data-i18n="why1.p">Reaktionszeit unter 2 Stunden. Auch am Wochenende und abends.</p>
                 </div>
             </div>
             <div class="why-item fade-in">
@@ -1027,8 +1057,8 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 </div>
                 <div>
-                    <h3>Faire Preise</h3>
-                    <p>Festpreis-Angebot per WhatsApp. Keine versteckten Kosten, keine Überraschungen.</p>
+                    <h3 data-i18n="why2.h3">Faire Preise</h3>
+                    <p data-i18n="why2.p">Festpreis-Angebot per WhatsApp. Keine versteckten Kosten, keine Überraschungen.</p>
                 </div>
             </div>
             <div class="why-item fade-in">
@@ -1036,8 +1066,8 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 </div>
                 <div>
-                    <h3>Direkt erreichbar</h3>
-                    <p>WhatsApp, Anruf — kein Callcenter, kein Formular. Sie sprechen sofort mit uns.</p>
+                    <h3 data-i18n="why3.h3">Direkt erreichbar</h3>
+                    <p data-i18n="why3.p">WhatsApp, Anruf — kein Callcenter, kein Formular. Sie sprechen sofort mit uns.</p>
                 </div>
             </div>
             <div class="why-item fade-in">
@@ -1045,8 +1075,8 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
                 </div>
                 <div>
-                    <h3>Zuverlässig</h3>
-                    <p>Pünktlich, vorsichtig, professionell. Ihr Eigentum ist bei uns sicher.</p>
+                    <h3 data-i18n="why4.h3">Zuverlässig</h3>
+                    <p data-i18n="why4.p">Pünktlich, vorsichtig, professionell. Ihr Eigentum ist bei uns sicher.</p>
                 </div>
             </div>
         </div>
@@ -1057,9 +1087,9 @@
 <section class="testimonials">
     <div class="container">
         <div class="section-title fade-in">
-            <span class="eyebrow">Kundenstimmen</span>
-            <h2>Was unsere Kunden sagen.</h2>
-            <p>Echte Bewertungen von echten Menschen — aus Wien, Graz, Linz und ganz Österreich.</p>
+            <span class="eyebrow" data-i18n="testi.eyebrow">Kundenstimmen</span>
+            <h2 data-i18n="testi.h2">Was unsere Kunden sagen.</h2>
+            <p data-i18n="testi.p">Echte Bewertungen von echten Menschen — aus Wien, Graz, Linz und ganz Österreich.</p>
         </div>
         <div class="testimonials-grid">
             <div class="testimonial-card fade-in">
@@ -1077,10 +1107,10 @@
                         </div>
                     </div>
                 </div>
-                <p class="testimonial-text">Superschnelle Antwort per WhatsApp — innerhalb von 15 Minuten hatte ich ein konkretes Angebot. Die Jungs waren pünktlich, vorsichtig mit den Möbeln und haben sogar beim Aufbau geholfen. Absolut empfehlenswert!</p>
+                <p class="testimonial-text" data-i18n="testi1.text">Superschnelle Antwort per WhatsApp — innerhalb von 15 Minuten hatte ich ein konkretes Angebot. Die Jungs waren pünktlich, vorsichtig mit den Möbeln und haben sogar beim Aufbau geholfen. Absolut empfehlenswert!</p>
                 <div class="testimonial-footer">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
-                    Google Bewertung · vor 2 Wochen
+                    <span data-i18n="testi1.date">Google Bewertung · vor 2 Wochen</span>
                 </div>
             </div>
             <div class="testimonial-card fade-in">
@@ -1098,10 +1128,10 @@
                         </div>
                     </div>
                 </div>
-                <p class="testimonial-text">Habe kurzfristig für einen Umzug angefragt — am nächsten Tag war das Team bereits da. Preis war fair, kein Aufpreis, genau wie vereinbart. Ich habe schon andere Anbieter ausprobiert, aber SOMON ist mit Abstand am unkompliziertesten.</p>
+                <p class="testimonial-text" data-i18n="testi2.text">Habe kurzfristig für einen Umzug angefragt — am nächsten Tag war das Team bereits da. Preis war fair, kein Aufpreis, genau wie vereinbart. Ich habe schon andere Anbieter ausprobiert, aber SOMON ist mit Abstand am unkompliziertesten.</p>
                 <div class="testimonial-footer">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
-                    Google Bewertung · vor 1 Monat
+                    <span data-i18n="testi2.date">Google Bewertung · vor 1 Monat</span>
                 </div>
             </div>
             <div class="testimonial-card fade-in">
@@ -1119,10 +1149,10 @@
                         </div>
                     </div>
                 </div>
-                <p class="testimonial-text">Entrümpelung der Wohnung meiner Mutter — sensibles Thema, viel Emotionen. Das Team war unglaublich respektvoll und einfühlsam. Alles besenrein hinterlassen, Preis exakt wie vereinbart. Danke von Herzen!</p>
+                <p class="testimonial-text" data-i18n="testi3.text">Entrümpelung der Wohnung meiner Mutter — sensibles Thema, viel Emotionen. Das Team war unglaublich respektvoll und einfühlsam. Alles besenrein hinterlassen, Preis exakt wie vereinbart. Danke von Herzen!</p>
                 <div class="testimonial-footer">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
-                    Google Bewertung · vor 3 Wochen
+                    <span data-i18n="testi3.date">Google Bewertung · vor 3 Wochen</span>
                 </div>
             </div>
             <div class="testimonial-card fade-in">
@@ -1140,10 +1170,10 @@
                         </div>
                     </div>
                 </div>
-                <p class="testimonial-text">Kleintransport für einen Schreibtisch und zwei Regale — kein Problem zu klein. Preis war absolut fair, Abwicklung per WhatsApp in 10 Minuten erledigt. Werde definitiv wieder buchen und weiterempfehlen.</p>
+                <p class="testimonial-text" data-i18n="testi4.text">Kleintransport für einen Schreibtisch und zwei Regale — kein Problem zu klein. Preis war absolut fair, Abwicklung per WhatsApp in 10 Minuten erledigt. Werde definitiv wieder buchen und weiterempfehlen.</p>
                 <div class="testimonial-footer">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
-                    Google Bewertung · vor 5 Tagen
+                    <span data-i18n="testi4.date">Google Bewertung · vor 5 Tagen</span>
                 </div>
             </div>
         </div>
@@ -1154,24 +1184,24 @@
 <section id="how">
     <div class="container">
         <div class="section-title fade-in">
-            <span class="eyebrow">So einfach geht's</span>
-            <h2>In 3 Schritten zu Ihrem Transport.</h2>
+            <span class="eyebrow" data-i18n="how.eyebrow">So einfach geht's</span>
+            <h2 data-i18n="how.h2">In 3 Schritten zu Ihrem Transport.</h2>
         </div>
         <div class="steps">
             <div class="step fade-in">
                 <div class="step-num">1</div>
-                <h3>WhatsApp schreiben</h3>
-                <p>Tippen Sie auf den WhatsApp-Button und beschreiben Sie kurz, was transportiert werden soll.</p>
+                <h3 data-i18n="step1.h3">WhatsApp schreiben</h3>
+                <p data-i18n="step1.p">Tippen Sie auf den WhatsApp-Button und beschreiben Sie kurz, was transportiert werden soll.</p>
             </div>
             <div class="step fade-in">
                 <div class="step-num">2</div>
-                <h3>Festpreis erhalten</h3>
-                <p>Wir antworten innerhalb von 30 Minuten mit einem fixen Preis und einer Zeitoption.</p>
+                <h3 data-i18n="step2.h3">Festpreis erhalten</h3>
+                <p data-i18n="step2.p">Wir antworten innerhalb von 30 Minuten mit einem fixen Preis und einer Zeitoption.</p>
             </div>
             <div class="step fade-in">
                 <div class="step-num">3</div>
-                <h3>Wir kommen vorbei</h3>
-                <p>Pünktlich, professionell, mit der richtigen Ausrüstung. Sie zahlen erst nach dem Transport.</p>
+                <h3 data-i18n="step3.h3">Wir kommen vorbei</h3>
+                <p data-i18n="step3.p">Pünktlich, professionell, mit der richtigen Ausrüstung. Sie zahlen erst nach dem Transport.</p>
             </div>
         </div>
     </div>
@@ -1181,52 +1211,52 @@
 <section class="faq" id="faq">
     <div class="container">
         <div class="section-title fade-in">
-            <span class="eyebrow">Häufige Fragen</span>
-            <h2>Alles, was Sie wissen müssen.</h2>
-            <p>Antworten auf die häufigsten Fragen rund um Transport, Preise und Ablauf.</p>
+            <span class="eyebrow" data-i18n="faq.eyebrow">Häufige Fragen</span>
+            <h2 data-i18n="faq.h2">Alles, was Sie wissen müssen.</h2>
+            <p data-i18n="faq.p">Antworten auf die häufigsten Fragen rund um Transport, Preise und Ablauf.</p>
         </div>
         <div class="faq-list">
             <div class="faq-item fade-in">
                 <button class="faq-q" aria-expanded="false">
-                    Wie wird der Preis berechnet?
+                    <span data-i18n="faq1.q">Wie wird der Preis berechnet?</span>
                     <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
                 </button>
-                <div class="faq-a">Sie beschreiben uns per WhatsApp kurz, was transportiert werden soll — wir schicken Ihnen einen Festpreis. Keine Stundensätze, keine versteckten Kosten. Der vereinbarte Preis ist der Endpreis.</div>
+                <div class="faq-a" data-i18n="faq1.a">Sie beschreiben uns per WhatsApp kurz, was transportiert werden soll — wir schicken Ihnen einen Festpreis. Keine Stundensätze, keine versteckten Kosten. Der vereinbarte Preis ist der Endpreis.</div>
             </div>
             <div class="faq-item fade-in">
                 <button class="faq-q" aria-expanded="false">
-                    Wie kurzfristig kann ich buchen?
+                    <span data-i18n="faq2.q">Wie kurzfristig kann ich buchen?</span>
                     <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
                 </button>
-                <div class="faq-a">Sehr kurzfristig — wir nehmen auch Same-Day-Aufträge an. Schreiben Sie uns einfach über WhatsApp, und wir melden uns innerhalb von 30 Minuten mit Verfügbarkeit und Preis.</div>
+                <div class="faq-a" data-i18n="faq2.a">Sehr kurzfristig — wir nehmen auch Same-Day-Aufträge an. Schreiben Sie uns einfach über WhatsApp, und wir melden uns innerhalb von 30 Minuten mit Verfügbarkeit und Preis.</div>
             </div>
             <div class="faq-item fade-in">
                 <button class="faq-q" aria-expanded="false">
-                    Helfen Sie auch beim Tragen, Auf- und Abbau?
+                    <span data-i18n="faq3.q">Helfen Sie auch beim Tragen, Auf- und Abbau?</span>
                     <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
                 </button>
-                <div class="faq-a">Ja. Wir tragen Ihre Möbel, bauen sie auf Wunsch ab und wieder auf. Sagen Sie uns vorab Bescheid — dann planen wir die nötige Zeit und das richtige Werkzeug ein.</div>
+                <div class="faq-a" data-i18n="faq3.a">Ja. Wir tragen Ihre Möbel, bauen sie auf Wunsch ab und wieder auf. Sagen Sie uns vorab Bescheid — dann planen wir die nötige Zeit und das richtige Werkzeug ein.</div>
             </div>
             <div class="faq-item fade-in">
                 <button class="faq-q" aria-expanded="false">
-                    Welche Gebiete decken Sie ab?
+                    <span data-i18n="faq4.q">Welche Gebiete decken Sie ab?</span>
                     <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
                 </button>
-                <div class="faq-a">Wir sind österreichweit aktiv — Wien, Graz, Linz, Salzburg, Innsbruck, Klagenfurt und alle Bundesländer. Für überregionale Transporte oder besondere Routen einfach anfragen.</div>
+                <div class="faq-a" data-i18n="faq4.a">Wir sind österreichweit aktiv — Wien, Graz, Linz, Salzburg, Innsbruck, Klagenfurt und alle Bundesländer. Für überregionale Transporte oder besondere Routen einfach anfragen.</div>
             </div>
             <div class="faq-item fade-in">
                 <button class="faq-q" aria-expanded="false">
-                    Wie und wann zahle ich?
+                    <span data-i18n="faq5.q">Wie und wann zahle ich?</span>
                     <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
                 </button>
-                <div class="faq-a">Gezahlt wird erst nach erfolgreichem Transport — bar oder per Überweisung. Keine Vorauszahlung, keine Kaution. Vertrauen ist die Grundlage unserer Arbeit.</div>
+                <div class="faq-a" data-i18n="faq5.a">Gezahlt wird erst nach erfolgreichem Transport — bar oder per Überweisung. Keine Vorauszahlung, keine Kaution. Vertrauen ist die Grundlage unserer Arbeit.</div>
             </div>
             <div class="faq-item fade-in">
                 <button class="faq-q" aria-expanded="false">
-                    Was muss ich vor dem Transport vorbereiten?
+                    <span data-i18n="faq6.q">Was muss ich vor dem Transport vorbereiten?</span>
                     <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
                 </button>
-                <div class="faq-a">Idealerweise ist ein Parkplatz in der Nähe des Ein- und Ausladeorts frei. Wertgegenstände und Dokumente nehmen Sie bitte selbst mit. Alles andere — Decken, Werkzeug, Sackkarre — bringen wir mit.</div>
+                <div class="faq-a" data-i18n="faq6.a">Idealerweise ist ein Parkplatz in der Nähe des Ein- und Ausladeorts frei. Wertgegenstände und Dokumente nehmen Sie bitte selbst mit. Alles andere — Decken, Werkzeug, Sackkarre — bringen wir mit.</div>
             </div>
         </div>
     </div>
@@ -1237,16 +1267,16 @@
     <div class="container">
         <div class="area-inner">
             <div class="fade-in">
-                <span class="eyebrow" style="background: rgba(37,211,102,0.15); color: #25D366;">Einsatzgebiet</span>
-                <h2>Ganz Österreich.</h2>
-                <p>Wir sind in allen Bundesländern für Sie unterwegs — von Wien über Graz und Linz bis Salzburg, Innsbruck und Klagenfurt. Auch kurzfristige und überregionale Aufträge.</p>
+                <span class="eyebrow" style="background: rgba(37,211,102,0.15); color: #25D366;" data-i18n="area.eyebrow">Einsatzgebiet</span>
+                <h2 data-i18n="area.h2">Ganz Österreich.</h2>
+                <p data-i18n="area.p">Wir sind in allen Bundesländern für Sie unterwegs — von Wien über Graz und Linz bis Salzburg, Innsbruck und Klagenfurt. Auch kurzfristige und überregionale Aufträge.</p>
                 <ul class="area-list">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Wien & Niederösterreich</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Burgenland</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Oberösterreich</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Steiermark & Kärnten</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Salzburg & Tirol</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Vorarlberg & Auf Anfrage</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="area1">Wien & Niederösterreich</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="area2">Burgenland</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="area3">Oberösterreich</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="area4">Steiermark & Kärnten</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="area5">Salzburg & Tirol</span></li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span data-i18n="area6">Vorarlberg & Auf Anfrage</span></li>
                 </ul>
             </div>
             <div class="area-visual fade-in" aria-hidden="true"></div>
@@ -1258,12 +1288,12 @@
 <section class="cta-section" id="contact">
     <div class="container">
         <div class="fade-in">
-            <h2>Bereit für Ihren Transport?</h2>
-            <p>Schreiben Sie uns auf WhatsApp — Antwort in unter 30 Minuten.</p>
+            <h2 data-i18n="cta.h2">Bereit für Ihren Transport?</h2>
+            <p data-i18n="cta.p">Schreiben Sie uns auf WhatsApp — Antwort in unter 30 Minuten.</p>
             <div class="cta-buttons">
-                <a href="https://wa.me/4368110163636?text=Hallo%20SOMON%2C%20ich%20brauche%20einen%20Transport." class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+                <a href="https://wa.me/4368110163636?text=Hallo%20SOMON%2C%20ich%20brauche%20einen%20Transport." class="btn btn-primary btn-lg" target="_blank" rel="noopener" data-wa>
                     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    WhatsApp starten
+                    <span data-i18n="cta.btn_wa">WhatsApp starten</span>
                 </a>
                 <a href="tel:+4368110163636" class="btn btn-ghost-light btn-lg">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1280,10 +1310,10 @@
         <div class="footer-grid">
             <div>
                 <div class="logo"><span>SOMON</span><span class="suffix" data-suffix>AT</span></div>
-                <p class="footer-about">Ihr zuverlässiger Partner für Möbeltransport, Umzüge, Entrümpelungen und Express Lieferung in ganz Österreich.</p>
+                <p class="footer-about" data-i18n="footer.about">Ihr zuverlässiger Partner für Möbeltransport, Umzüge, Entrümpelungen und Express Lieferung in ganz Österreich.</p>
             </div>
             <div>
-                <h4>Services</h4>
+                <h4 data-i18n="footer.services">Services</h4>
                 <ul class="footer-list">
                     <li><a href="#services">Möbeltransport</a></li>
                     <li><a href="#services">Umzüge</a></li>
@@ -1293,27 +1323,27 @@
                 </ul>
             </div>
             <div>
-                <h4>Kontakt</h4>
+                <h4 data-i18n="footer.contact">Kontakt</h4>
                 <ul class="footer-list">
                     <li><a href="tel:+4368110163636"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +43 681 10163636</a></li>
-                    <li><a href="https://wa.me/4368110163636" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> WhatsApp Chat</a></li>
+                    <li><a href="https://wa.me/4368110163636" target="_blank" rel="noopener" data-wa><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg> <span data-i18n="footer.wa_chat">WhatsApp Chat</span></a></li>
                     <li><a href="mailto:office@somon.at"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> office@somon.at</a></li>
                 </ul>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <span>© 2026 SOMON. Alle Rechte vorbehalten. — Wien, Österreich</span>
+            <span data-i18n="footer.copyright">© 2026 SOMON. Alle Rechte vorbehalten. — Wien, Österreich</span>
             <div class="footer-bottom-links">
-                <a href="#" id="open-impressum">Impressum</a>
-                <a href="#" id="open-datenschutz">Datenschutz</a>
+                <a href="#" id="open-impressum" data-i18n="footer.impressum">Impressum</a>
+                <a href="#" id="open-datenschutz" data-i18n="footer.datenschutz">Datenschutz</a>
             </div>
         </div>
     </div>
 </footer>
 
 <!-- ============ STICKY WHATSAPP (MOBILE) ============ -->
-<a href="https://wa.me/4368110163636?text=Hallo%20SOMON%2C%20ich%20brauche%20einen%20Transport." class="sticky-wa" target="_blank" rel="noopener" aria-label="WhatsApp Chat starten">
+<a href="https://wa.me/4368110163636?text=Hallo%20SOMON%2C%20ich%20brauche%20einen%20Transport." class="sticky-wa" target="_blank" rel="noopener" aria-label="WhatsApp Chat starten" data-wa>
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 
@@ -1388,48 +1418,227 @@
 </div>
 
 <script>
-    // ============ DOMAIN-BASED BRANDING ============
+    // ============ I18N ============
     (function() {
-        const host = (window.location.hostname || '').toLowerCase();
-
-        const config = {
-            suffix: 'AT',
-            title: 'SOMON AT — Möbeltransport, Umzüge & Entrümpelungen in ganz Österreich',
-            description: 'SOMON AT — Schneller und zuverlässiger Möbeltransport, Umzüge, Entrümpelungen und Express Lieferung in ganz Österreich. Jetzt per WhatsApp anfragen!',
-            h1: null,
-            subtitle: null
+        var T = {
+            de: {
+                'nav.services':'Services','nav.why':'Warum SOMON','nav.how':'So geht\'s','nav.contact':'Kontakt','nav.wa_btn':'WhatsApp',
+                'hero.eyebrow':'Österreichweit im Einsatz',
+                'hero.h1':'Schneller Transport,<br>wenn Sie ihn brauchen.',
+                'hero.subtitle':'Möbeltransport, Umzüge, Entrümpelungen und Express Lieferungen in ganz Österreich. Direkter Kontakt per WhatsApp — keine Formulare, keine Wartezeit.',
+                'hero.btn_wa':'WhatsApp kontaktieren','hero.btn_call':'Jetzt anrufen',
+                'hero.trust1':'Transporte','hero.trust2':'Erreichbar','hero.trust3':'Festpreis','hero.trust4':'Bewertungen',
+                'svc.eyebrow':'Unsere Services','svc.h2':'Alles, was Sie transportieren müssen.','svc.p':'Von einzelnen Möbelstücken bis zum kompletten Umzug — wir kümmern uns darum.',
+                'svc1.h3':'Möbeltransport','svc1.p':'Sichere Beförderung Ihrer Möbel — vom Sofa bis zum Kleiderschrank, mit Tragehilfe.',
+                'svc2.h3':'Umzüge','svc2.p':'Kompletter Umzugsservice in ganz Österreich — wir packen mit an, Sie sparen Zeit.',
+                'svc3.h3':'Express Lieferung','svc3.p':'Same-Day-Lieferung in Wien & Umgebung — wenn es schnell gehen muss, sind wir in 2 Stunden bei Ihnen.',
+                'svc4.h3':'Entrümpelungen','svc4.p':'Wohnungen, Keller, Dachböden, Garagen — wir räumen auf und entsorgen fachgerecht. Besenrein zum Festpreis.',
+                'svc5.h3':'Kleintransporte','svc5.p':'Pakete, Einzelteile, kleine Sendungen — auch wenn es nur eine Sache ist, fahren wir.',
+                'eq.van':'3,5t Transporter','eq.blankets':'Profi-Möbeldecken','eq.cart':'Sackkarre & Tragegeschirr','eq.assembly':'Möbel-Demontage & Montage','eq.fixprice':'Festpreisgarantie','eq.disposal':'Fachgerechte Entsorgung',
+                'why.eyebrow':'Warum SOMON','why.h2':'Kunden in ganz Österreich vertrauen uns aus gutem Grund.',
+                'why1.h3':'Schnell verfügbar','why1.p':'Reaktionszeit unter 2 Stunden. Auch am Wochenende und abends.',
+                'why2.h3':'Faire Preise','why2.p':'Festpreis-Angebot per WhatsApp. Keine versteckten Kosten, keine Überraschungen.',
+                'why3.h3':'Direkt erreichbar','why3.p':'WhatsApp, Anruf — kein Callcenter, kein Formular. Sie sprechen sofort mit uns.',
+                'why4.h3':'Zuverlässig','why4.p':'Pünktlich, vorsichtig, professionell. Ihr Eigentum ist bei uns sicher.',
+                'testi.eyebrow':'Kundenstimmen','testi.h2':'Was unsere Kunden sagen.','testi.p':'Echte Bewertungen von echten Menschen — aus Wien, Graz, Linz und ganz Österreich.',
+                'testi1.text':'Superschnelle Antwort per WhatsApp — innerhalb von 15 Minuten hatte ich ein konkretes Angebot. Die Jungs waren pünktlich, vorsichtig mit den Möbeln und haben sogar beim Aufbau geholfen. Absolut empfehlenswert!',
+                'testi1.date':'Google Bewertung · vor 2 Wochen',
+                'testi2.text':'Habe kurzfristig für einen Umzug angefragt — am nächsten Tag war das Team bereits da. Preis war fair, kein Aufpreis, genau wie vereinbart. Ich habe schon andere Anbieter ausprobiert, aber SOMON ist mit Abstand am unkompliziertesten.',
+                'testi2.date':'Google Bewertung · vor 1 Monat',
+                'testi3.text':'Entrümpelung der Wohnung meiner Mutter — sensibles Thema, viel Emotionen. Das Team war unglaublich respektvoll und einfühlsam. Alles besenrein hinterlassen, Preis exakt wie vereinbart. Danke von Herzen!',
+                'testi3.date':'Google Bewertung · vor 3 Wochen',
+                'testi4.text':'Kleintransport für einen Schreibtisch und zwei Regale — kein Problem zu klein. Preis war absolut fair, Abwicklung per WhatsApp in 10 Minuten erledigt. Werde definitiv wieder buchen und weiterempfehlen.',
+                'testi4.date':'Google Bewertung · vor 5 Tagen',
+                'how.eyebrow':'So einfach geht\'s','how.h2':'In 3 Schritten zu Ihrem Transport.',
+                'step1.h3':'WhatsApp schreiben','step1.p':'Tippen Sie auf den WhatsApp-Button und beschreiben Sie kurz, was transportiert werden soll.',
+                'step2.h3':'Festpreis erhalten','step2.p':'Wir antworten innerhalb von 30 Minuten mit einem fixen Preis und einer Zeitoption.',
+                'step3.h3':'Wir kommen vorbei','step3.p':'Pünktlich, professionell, mit der richtigen Ausrüstung. Sie zahlen erst nach dem Transport.',
+                'faq.eyebrow':'Häufige Fragen','faq.h2':'Alles, was Sie wissen müssen.','faq.p':'Antworten auf die häufigsten Fragen rund um Transport, Preise und Ablauf.',
+                'faq1.q':'Wie wird der Preis berechnet?','faq1.a':'Sie beschreiben uns per WhatsApp kurz, was transportiert werden soll — wir schicken Ihnen einen Festpreis. Keine Stundensätze, keine versteckten Kosten. Der vereinbarte Preis ist der Endpreis.',
+                'faq2.q':'Wie kurzfristig kann ich buchen?','faq2.a':'Sehr kurzfristig — wir nehmen auch Same-Day-Aufträge an. Schreiben Sie uns einfach über WhatsApp, und wir melden uns innerhalb von 30 Minuten mit Verfügbarkeit und Preis.',
+                'faq3.q':'Helfen Sie auch beim Tragen, Auf- und Abbau?','faq3.a':'Ja. Wir tragen Ihre Möbel, bauen sie auf Wunsch ab und wieder auf. Sagen Sie uns vorab Bescheid — dann planen wir die nötige Zeit und das richtige Werkzeug ein.',
+                'faq4.q':'Welche Gebiete decken Sie ab?','faq4.a':'Wir sind österreichweit aktiv — Wien, Graz, Linz, Salzburg, Innsbruck, Klagenfurt und alle Bundesländer. Für überregionale Transporte oder besondere Routen einfach anfragen.',
+                'faq5.q':'Wie und wann zahle ich?','faq5.a':'Gezahlt wird erst nach erfolgreichem Transport — bar oder per Überweisung. Keine Vorauszahlung, keine Kaution. Vertrauen ist die Grundlage unserer Arbeit.',
+                'faq6.q':'Was muss ich vor dem Transport vorbereiten?','faq6.a':'Idealerweise ist ein Parkplatz in der Nähe des Ein- und Ausladeorts frei. Wertgegenstände und Dokumente nehmen Sie bitte selbst mit. Alles andere — Decken, Werkzeug, Sackkarre — bringen wir mit.',
+                'area.eyebrow':'Einsatzgebiet','area.h2':'Ganz Österreich.','area.p':'Wir sind in allen Bundesländern für Sie unterwegs — von Wien über Graz und Linz bis Salzburg, Innsbruck und Klagenfurt. Auch kurzfristige und überregionale Aufträge.',
+                'area1':'Wien & Niederösterreich','area2':'Burgenland','area3':'Oberösterreich','area4':'Steiermark & Kärnten','area5':'Salzburg & Tirol','area6':'Vorarlberg & Auf Anfrage',
+                'cta.h2':'Bereit für Ihren Transport?','cta.p':'Schreiben Sie uns auf WhatsApp — Antwort in unter 30 Minuten.','cta.btn_wa':'WhatsApp starten',
+                'footer.about':'Ihr zuverlässiger Partner für Möbeltransport, Umzüge, Entrümpelungen und Express Lieferung in ganz Österreich.',
+                'footer.services':'Services','footer.contact':'Kontakt','footer.wa_chat':'WhatsApp Chat',
+                'footer.copyright':'© 2026 SOMON. Alle Rechte vorbehalten. — Wien, Österreich',
+                'footer.impressum':'Impressum','footer.datenschutz':'Datenschutz',
+                'wa.msg':'Hallo SOMON, ich brauche einen Transport.'
+            },
+            en: {
+                'nav.services':'Services','nav.why':'Why SOMON','nav.how':'How It Works','nav.contact':'Contact','nav.wa_btn':'WhatsApp',
+                'hero.eyebrow':'Serving All of Austria',
+                'hero.h1':'Fast Transport,<br>When You Need It.',
+                'hero.subtitle':'Furniture transport, moving, clearances, and express delivery across Austria. Direct contact via WhatsApp — no forms, no waiting.',
+                'hero.btn_wa':'Contact on WhatsApp','hero.btn_call':'Call Now',
+                'hero.trust1':'Transports','hero.trust2':'Available','hero.trust3':'Fixed Price','hero.trust4':'Reviews',
+                'svc.eyebrow':'Our Services','svc.h2':'Everything You Need Transported.','svc.p':'From single furniture pieces to a full move — we take care of it.',
+                'svc1.h3':'Furniture Transport','svc1.p':'Safe transport of your furniture — from sofas to wardrobes, with carrying assistance.',
+                'svc2.h3':'Moving','svc2.p':'Complete moving service across Austria — we pitch in, you save time.',
+                'svc3.h3':'Express Delivery','svc3.p':'Same-day delivery in Vienna & surroundings — when it\'s urgent, we\'re there within 2 hours.',
+                'svc4.h3':'Clearances','svc4.p':'Apartments, basements, attics, garages — we clear out and dispose of items professionally. Broom-clean at a fixed price.',
+                'svc5.h3':'Small Transports','svc5.p':'Parcels, individual items, small shipments — even if it\'s just one thing, we drive.',
+                'eq.van':'3.5t Van','eq.blankets':'Professional Furniture Blankets','eq.cart':'Hand Truck & Carrying Straps','eq.assembly':'Furniture Disassembly & Assembly','eq.fixprice':'Fixed Price Guarantee','eq.disposal':'Professional Disposal',
+                'why.eyebrow':'Why SOMON','why.h2':'Customers across Austria trust us — for good reason.',
+                'why1.h3':'Quick Availability','why1.p':'Response time under 2 hours. Also on weekends and evenings.',
+                'why2.h3':'Fair Prices','why2.p':'Fixed price quote via WhatsApp. No hidden costs, no surprises.',
+                'why3.h3':'Directly Reachable','why3.p':'WhatsApp, phone — no call center, no form. You speak with us right away.',
+                'why4.h3':'Reliable','why4.p':'Punctual, careful, professional. Your belongings are safe with us.',
+                'testi.eyebrow':'Customer Reviews','testi.h2':'What our customers say.','testi.p':'Real reviews from real people — from Vienna, Graz, Linz and all over Austria.',
+                'testi1.text':'Super fast response on WhatsApp — within 15 minutes I had a concrete offer. The guys were punctual, careful with the furniture, and even helped with assembly. Absolutely recommend!',
+                'testi1.date':'Google Review · 2 weeks ago',
+                'testi2.text':'Booked last-minute for a move — the team was already there the next day. Price was fair, no extra charges, exactly as agreed. I\'ve tried other providers, but SOMON is by far the most straightforward.',
+                'testi2.date':'Google Review · 1 month ago',
+                'testi3.text':'Clearing my mother\'s apartment — a sensitive subject, lots of emotions. The team was incredibly respectful and empathetic. Left everything broom-clean, price exactly as agreed. Thank you so much!',
+                'testi3.date':'Google Review · 3 weeks ago',
+                'testi4.text':'Small transport for a desk and two shelves — no job too small. Price was absolutely fair, handled via WhatsApp in 10 minutes. Will definitely book again and recommend.',
+                'testi4.date':'Google Review · 5 days ago',
+                'how.eyebrow':'It\'s That Simple','how.h2':'Your Transport in 3 Steps.',
+                'step1.h3':'Send a WhatsApp','step1.p':'Tap the WhatsApp button and briefly describe what needs to be transported.',
+                'step2.h3':'Receive a Fixed Price','step2.p':'We reply within 30 minutes with a fixed price and a time option.',
+                'step3.h3':'We Come to You','step3.p':'Punctual, professional, with the right equipment. You pay only after the transport.',
+                'faq.eyebrow':'FAQ','faq.h2':'Everything You Need to Know.','faq.p':'Answers to the most common questions about transport, prices, and process.',
+                'faq1.q':'How is the price calculated?','faq1.a':'You briefly describe via WhatsApp what needs to be transported — we send you a fixed price. No hourly rates, no hidden costs. The agreed price is the final price.',
+                'faq2.q':'How last-minute can I book?','faq2.a':'Very last-minute — we also accept same-day orders. Just message us on WhatsApp and we\'ll get back to you within 30 minutes with availability and price.',
+                'faq3.q':'Do you help with carrying, assembly, and disassembly?','faq3.a':'Yes. We carry your furniture and assemble or disassemble it on request. Just let us know in advance — then we\'ll plan the necessary time and the right tools.',
+                'faq4.q':'Which areas do you cover?','faq4.a':'We operate throughout Austria — Vienna, Graz, Linz, Salzburg, Innsbruck, Klagenfurt and all states. For interregional transports or special routes, just enquire.',
+                'faq5.q':'How and when do I pay?','faq5.a':'Payment is made only after the successful transport — cash or bank transfer. No advance payment, no deposit. Trust is the foundation of our work.',
+                'faq6.q':'What do I need to prepare before the transport?','faq6.a':'Ideally, a parking spot near the loading and unloading location is free. Please take valuables and documents with you. Everything else — blankets, tools, hand truck — we bring along.',
+                'area.eyebrow':'Service Area','area.h2':'All of Austria.','area.p':'We operate in all federal states — from Vienna to Graz and Linz, through to Salzburg, Innsbruck, and Klagenfurt. Also short-notice and interregional orders.',
+                'area1':'Vienna & Lower Austria','area2':'Burgenland','area3':'Upper Austria','area4':'Styria & Carinthia','area5':'Salzburg & Tyrol','area6':'Vorarlberg & On Request',
+                'cta.h2':'Ready for Your Transport?','cta.p':'Message us on WhatsApp — response in under 30 minutes.','cta.btn_wa':'Start WhatsApp',
+                'footer.about':'Your reliable partner for furniture transport, moving, clearances, and express delivery across Austria.',
+                'footer.services':'Services','footer.contact':'Contact','footer.wa_chat':'WhatsApp Chat',
+                'footer.copyright':'© 2026 SOMON. All rights reserved. — Vienna, Austria',
+                'footer.impressum':'Legal Notice','footer.datenschutz':'Privacy Policy',
+                'wa.msg':'Hello SOMON, I need a transport.'
+            },
+            ru: {
+                'nav.services':'Услуги','nav.why':'Почему SOMON','nav.how':'Как работаем','nav.contact':'Контакт','nav.wa_btn':'WhatsApp',
+                'hero.eyebrow':'Работаем по всей Австрии',
+                'hero.h1':'Быстрый транспорт,<br>когда он вам нужен.',
+                'hero.subtitle':'Перевозка мебели, переезды, вывоз вещей и срочная доставка по всей Австрии. Пишите в WhatsApp — без форм и ожидания.',
+                'hero.btn_wa':'Написать в WhatsApp','hero.btn_call':'Позвонить сейчас',
+                'hero.trust1':'Перевозок','hero.trust2':'Доступны','hero.trust3':'Фикс. цена','hero.trust4':'Отзывов',
+                'svc.eyebrow':'Наши услуги','svc.h2':'Всё, что нужно перевезти.','svc.p':'От одного предмета мебели до полного переезда — мы берём на себя всё.',
+                'svc1.h3':'Перевозка мебели','svc1.p':'Бережная перевозка вашей мебели — от дивана до шкафа, с помощью при погрузке.',
+                'svc2.h3':'Переезды','svc2.p':'Полный переезд по всей Австрии — помогаем с погрузкой, вы экономите время.',
+                'svc3.h3':'Срочная доставка','svc3.p':'Доставка в день заказа по Вене и окрестностям — если срочно, мы у вас через 2 часа.',
+                'svc4.h3':'Вывоз вещей','svc4.p':'Квартиры, подвалы, чердаки, гаражи — вывозим и утилизируем профессионально. Сдача помещения под метлу по фиксированной цене.',
+                'svc5.h3':'Малый транспорт','svc5.p':'Посылки, отдельные предметы, небольшие грузы — даже если это одна вещь, мы едем.',
+                'eq.van':'Транспортёр 3,5 т','eq.blankets':'Проф. мебельные одеяла','eq.cart':'Тележка и ремни','eq.assembly':'Сборка и разборка мебели','eq.fixprice':'Гарантия фикс. цены','eq.disposal':'Профессиональная утилизация',
+                'why.eyebrow':'Почему SOMON','why.h2':'Клиенты по всей Австрии доверяют нам — и не зря.',
+                'why1.h3':'Быстрый отклик','why1.p':'Время ответа — до 2 часов. Работаем в выходные и по вечерам.',
+                'why2.h3':'Честные цены','why2.p':'Фиксированная цена через WhatsApp. Никаких скрытых платежей и сюрпризов.',
+                'why3.h3':'Прямая связь','why3.p':'WhatsApp, звонок — без колл-центра и форм. Вы сразу говорите с нами.',
+                'why4.h3':'Надёжность','why4.p':'Пунктуально, аккуратно, профессионально. Ваше имущество в безопасности.',
+                'testi.eyebrow':'Отзывы клиентов','testi.h2':'Что говорят наши клиенты.','testi.p':'Реальные отзывы реальных людей — из Вены, Граца, Линца и всей Австрии.',
+                'testi1.text':'Молниеносный ответ в WhatsApp — через 15 минут уже было конкретное предложение. Ребята приехали вовремя, обращались с мебелью аккуратно и даже помогли со сборкой. Однозначно рекомендую!',
+                'testi1.date':'Отзыв Google · 2 недели назад',
+                'testi2.text':'Заказал переезд в последний момент — команда была уже на следующий день. Цена честная, никаких доплат, всё как договорились. Пробовал других, но SOMON — однозначно самый удобный.',
+                'testi2.date':'Отзыв Google · 1 месяц назад',
+                'testi3.text':'Вывоз вещей из квартиры мамы — тема непростая, много эмоций. Команда была невероятно тактична и внимательна. Всё в идеальном порядке, цена точно как договорились. Огромное спасибо!',
+                'testi3.date':'Отзыв Google · 3 недели назад',
+                'testi4.text':'Перевезли стол и две полки — никакой заказ не слишком мал. Цена абсолютно честная, всё оформили в WhatsApp за 10 минут. Точно буду обращаться снова и рекомендовать.',
+                'testi4.date':'Отзыв Google · 5 дней назад',
+                'how.eyebrow':'Всё просто','how.h2':'Ваш транспорт за 3 шага.',
+                'step1.h3':'Напишите в WhatsApp','step1.p':'Нажмите кнопку WhatsApp и кратко опишите, что нужно перевезти.',
+                'step2.h3':'Получите фиксированную цену','step2.p':'Мы ответим в течение 30 минут с конкретной ценой и временны́м вариантом.',
+                'step3.h3':'Мы приедем','step3.p':'Пунктуально, профессионально, с нужным оборудованием. Оплата — только после выполнения.',
+                'faq.eyebrow':'Частые вопросы','faq.h2':'Всё, что нужно знать.','faq.p':'Ответы на самые частые вопросы о перевозке, ценах и процессе.',
+                'faq1.q':'Как рассчитывается цена?','faq1.a':'Вы кратко описываете в WhatsApp, что нужно перевезти — мы присылаем фиксированную цену. Никаких почасовых ставок и скрытых платежей. Согласованная цена — окончательная.',
+                'faq2.q':'Насколько срочно можно заказать?','faq2.a':'Очень срочно — принимаем и заказы на сегодня. Просто напишите нам в WhatsApp, и мы ответим в течение 30 минут с доступностью и ценой.',
+                'faq3.q':'Помогаете с переноской, сборкой и разборкой?','faq3.a':'Да. Мы переносим мебель и при необходимости разбираем и собираем её. Предупредите заранее — тогда мы учтём нужное время и инструменты.',
+                'faq4.q':'Какие районы вы охватываете?','faq4.a':'Работаем по всей Австрии — Вена, Грац, Линц, Зальцбург, Инсбрук, Клагенфурт и все федеральные земли. Для межрегиональных перевозок или нестандартных маршрутов — просто спросите.',
+                'faq5.q':'Как и когда я плачу?','faq5.a':'Оплата только после выполнения перевозки — наличными или банковским переводом. Никакой предоплаты, никакого залога. Доверие — основа нашей работы.',
+                'faq6.q':'Что нужно подготовить перед перевозкой?','faq6.a':'В идеале — свободное место для парковки у погрузки и разгрузки. Ценные вещи и документы возьмите с собой. Всё остальное — одеяла, инструменты, тележку — привозим мы.',
+                'area.eyebrow':'Зона обслуживания','area.h2':'Вся Австрия.','area.p':'Работаем во всех федеральных землях — от Вены до Граца и Линца, а также в Зальцбурге, Инсбруке и Клагенфурте. Принимаем срочные и межрегиональные заказы.',
+                'area1':'Вена и Нижняя Австрия','area2':'Бургенланд','area3':'Верхняя Австрия','area4':'Штирия и Каринтия','area5':'Зальцбург и Тироль','area6':'Форарльберг и по запросу',
+                'cta.h2':'Готовы к вашей перевозке?','cta.p':'Напишите нам в WhatsApp — ответ менее чем за 30 минут.','cta.btn_wa':'Написать в WhatsApp',
+                'footer.about':'Ваш надёжный партнёр по перевозке мебели, переездам, вывозу вещей и срочной доставке по всей Австрии.',
+                'footer.services':'Услуги','footer.contact':'Контакт','footer.wa_chat':'Чат WhatsApp',
+                'footer.copyright':'© 2026 SOMON. Все права защищены. — Вена, Австрия',
+                'footer.impressum':'Юридические сведения','footer.datenschutz':'Конфиденциальность',
+                'wa.msg':'Здравствуйте SOMON, мне нужна перевозка.'
+            }
         };
 
-        if (host.includes('somon-logistik')) {
-            config.suffix = 'LOGISTIK';
-            config.title = 'SOMON LOGISTIK — Transport & Logistik in ganz Österreich';
-            config.description = 'SOMON LOGISTIK — Professionelle Transport- und Logistiklösungen in ganz Österreich. Direkt per WhatsApp anfragen.';
-            config.h1 = 'SOMON LOGISTIK — Ihr Logistikpartner';
-            config.subtitle = 'Zuverlässige Transport- und Logistiklösungen für Privat- und Geschäftskunden in ganz Österreich. Direkter Kontakt per WhatsApp.';
-        } else if (host.includes('somon-go')) {
-            config.suffix = 'GO';
-            config.title = 'SOMON GO — Express Möbeltransport in Österreich';
-            config.description = 'SOMON GO — Express Möbeltransport und Same-Day Lieferung in Wien & ganz Österreich. Schnell, flexibel und direkt erreichbar per WhatsApp.';
-            config.h1 = 'SOMON GO — Schnell & Flexibel';
-            config.subtitle = 'Express Möbeltransport und Same-Day Lieferung in Wien & ganz Österreich. Direkter Kontakt per WhatsApp — keine Formulare, keine Wartezeit.';
+        var domainT = {
+            'somon-logistik': {
+                de: {'hero.h1':'SOMON LOGISTIK —<br>Ihr Logistikpartner','hero.subtitle':'Zuverlässige Transport- und Logistiklösungen für Privat- und Geschäftskunden in ganz Österreich. Direkter Kontakt per WhatsApp.'},
+                en: {'hero.h1':'SOMON LOGISTIK —<br>Your Logistics Partner','hero.subtitle':'Reliable transport and logistics solutions for private and business customers across Austria. Direct contact via WhatsApp.'},
+                ru: {'hero.h1':'SOMON LOGISTIK —<br>ваш логистический партнёр','hero.subtitle':'Надёжные транспортные и логистические решения для частных и корпоративных клиентов по всей Австрии. Прямой контакт через WhatsApp.'}
+            },
+            'somon-go': {
+                de: {'hero.h1':'SOMON GO —<br>Schnell & Flexibel','hero.subtitle':'Express Möbeltransport und Same-Day Lieferung in Wien & ganz Österreich. Direkter Kontakt per WhatsApp — keine Formulare, keine Wartezeit.'},
+                en: {'hero.h1':'SOMON GO —<br>Fast & Flexible','hero.subtitle':'Express furniture transport and same-day delivery in Vienna & across Austria. Direct contact via WhatsApp — no forms, no waiting.'},
+                ru: {'hero.h1':'SOMON GO —<br>Быстро и гибко','hero.subtitle':'Экспресс-перевозка мебели и доставка в день заказа по Вене и всей Австрии. Прямой контакт через WhatsApp — без форм и ожидания.'}
+            }
+        };
+
+        var WA_BASE = 'https://wa.me/4368110163636?text=';
+
+        function applyLang(lang) {
+            var data = T[lang];
+            if (!data) return;
+            var host = (window.location.hostname || '').toLowerCase();
+            var overrides = {};
+            if (host.indexOf('somon-logistik') !== -1) overrides = domainT['somon-logistik'][lang] || {};
+            else if (host.indexOf('somon-go') !== -1) overrides = domainT['somon-go'][lang] || {};
+            var merged = Object.assign({}, data, overrides);
+
+            document.querySelectorAll('[data-i18n]').forEach(function(el) {
+                var key = el.dataset.i18n;
+                if (merged[key] !== undefined) el.textContent = merged[key];
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                var key = el.dataset.i18nHtml;
+                if (merged[key] !== undefined) el.innerHTML = merged[key];
+            });
+            var waMsg = encodeURIComponent(merged['wa.msg'] || 'Hallo SOMON, ich brauche einen Transport.');
+            document.querySelectorAll('[data-wa]').forEach(function(el) {
+                el.href = WA_BASE + waMsg;
+            });
+            document.querySelectorAll('.lang-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            document.documentElement.lang = lang === 'ru' ? 'ru' : lang === 'en' ? 'en' : 'de';
+            localStorage.setItem('lang', lang);
         }
 
-        document.querySelectorAll('[data-suffix]').forEach(function(el) {
-            el.textContent = config.suffix;
+        var saved = localStorage.getItem('lang');
+        applyLang((saved && T[saved]) ? saved : 'de');
+
+        document.querySelectorAll('.lang-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() { applyLang(btn.dataset.lang); });
         });
+    })();
 
-        document.title = config.title;
-        const desc = document.querySelector('meta[name="description"]');
-        if (desc) desc.setAttribute('content', config.description);
+    // ============ DOMAIN-BASED BRANDING ============
+    (function() {
+        var host = (window.location.hostname || '').toLowerCase();
+        var suffix = 'AT';
+        var title = 'SOMON AT — Möbeltransport, Umzüge & Entrümpelungen in ganz Österreich';
+        var description = 'SOMON AT — Schneller und zuverlässiger Möbeltransport, Umzüge, Entrümpelungen und Express Lieferung in ganz Österreich. Jetzt per WhatsApp anfragen!';
 
-        if (config.h1) {
-            const h1El = document.querySelector('[data-dyn-h1]');
-            if (h1El) h1El.textContent = config.h1;
+        if (host.indexOf('somon-logistik') !== -1) {
+            suffix = 'LOGISTIK';
+            title = 'SOMON LOGISTIK — Transport & Logistik in ganz Österreich';
+            description = 'SOMON LOGISTIK — Professionelle Transport- und Logistiklösungen in ganz Österreich. Direkt per WhatsApp anfragen.';
+        } else if (host.indexOf('somon-go') !== -1) {
+            suffix = 'GO';
+            title = 'SOMON GO — Express Möbeltransport in Österreich';
+            description = 'SOMON GO — Express Möbeltransport und Same-Day Lieferung in Wien & ganz Österreich. Schnell, flexibel und direkt erreichbar per WhatsApp.';
         }
-        if (config.subtitle) {
-            const subEl = document.querySelector('[data-dyn-subtitle]');
-            if (subEl) subEl.textContent = config.subtitle;
-        }
+
+        document.querySelectorAll('[data-suffix]').forEach(function(el) { el.textContent = suffix; });
+        document.title = title;
+        var desc = document.querySelector('meta[name="description"]');
+        if (desc) desc.setAttribute('content', description);
     })();
 
     // ============ STICKY HEADER ============
