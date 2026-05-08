@@ -5,7 +5,7 @@
   "trailingSlash": false,
   "headers": [
     {
-      "source": "/sitemap.xml",
+      "source": "/(sitemap|sitemap-logistik|sitemap-go).xml",
       "headers": [
         {
           "key": "Content-Type",
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "source": "/robots.txt",
+      "source": "/(robots|robots-logistik|robots-go).txt",
       "headers": [
         {
           "key": "Content-Type",
