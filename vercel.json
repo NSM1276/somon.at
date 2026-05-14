@@ -3,23 +3,49 @@
   "buildCommand": "",
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "has": [{"type": "host", "value": "(?:www\\.)?somon-logistik\\.at"}],
+      "source": "/",
+      "destination": "/index-logistik.html"
+    },
+    {
+      "has": [{"type": "host", "value": "(?:www\\.)?somon-logistik\\.at"}],
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-logistik.xml"
+    },
+    {
+      "has": [{"type": "host", "value": "(?:www\\.)?somon-logistik\\.at"}],
+      "source": "/robots.txt",
+      "destination": "/robots-logistik.txt"
+    },
+    {
+      "has": [{"type": "host", "value": "(?:www\\.)?somon-go\\.at"}],
+      "source": "/",
+      "destination": "/index-go.html"
+    },
+    {
+      "has": [{"type": "host", "value": "(?:www\\.)?somon-go\\.at"}],
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-go.xml"
+    },
+    {
+      "has": [{"type": "host", "value": "(?:www\\.)?somon-go\\.at"}],
+      "source": "/robots.txt",
+      "destination": "/robots-go.txt"
+    }
+  ],
   "headers": [
     {
       "source": "/(sitemap|sitemap-logistik|sitemap-go).xml",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/xml; charset=utf-8"
-        }
+        {"key": "Content-Type", "value": "application/xml; charset=utf-8"}
       ]
     },
     {
       "source": "/(robots|robots-logistik|robots-go).txt",
       "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
-        }
+        {"key": "Content-Type", "value": "text/plain; charset=utf-8"}
       ]
     }
   ]
